@@ -1,0 +1,7 @@
+id, reaction, rate
+FAup, FAx <-> FA, vm_up*(M_FAx - M_FA) / (KM_up + M_FAx + M_FA)
+FAir, FAx -> FA, vm_ir*M_FAx / (KM_ir + M_FAx)
+TAGsyn, Gly3P + 3 FA + 3 ATP --> TAG + 3 AMP + 3 PPi + Pi, vm_tag*M_FA / (KM_tag + M_FA)
+VLDLsyn, TAG -> VLDL, vm_vldl * M_TAG / (KM_vldl + M_TAG)
+LDsyn, TAG -> LD, vm_ld*M_TAG / (KM_ld + M_TAG)
+lipolys, LD -> 3 FA + glycerol, vm_lipo * M_LD /(KM_lipo + M_LD)
