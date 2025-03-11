@@ -1,13 +1,13 @@
-id, value
-vm_ir, 0.0
-vm_up, 1.0
-KM_up, 0.5
-KM_ir, 0.5
-vm_tag, 2.0
-KM_tag, 1.0
-KM_vldl, 1.0
-vm_vldl, 5.0
-KM_ld, 0.1
-vm_ld, 5.0
-KM_lipo, 10.0
-vm_lipo, 5.0
+id, value, unit
+vm_ir, 0.0, mmole_per_hour
+vm_up, 1.0, mmole_per_hour
+KM_up, 0.5, mmole
+KM_ir, 0.5, mmole
+vm_tag, 2.0, mmole_per_hour
+KM_tag, 1.0, mmole
+KM_vldl, 1.0, mmole
+vm_vldl, 5.0, mmole_per_hour
+KM_ld, 0.1, mmole
+vm_ld, 5.0, mmole_per_hour
+KM_lipo, 10.0, mmole
+vm_lipo, 5.0, mmole_per_hour

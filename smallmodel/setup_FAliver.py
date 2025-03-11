@@ -28,11 +28,46 @@ def create_model(mets: pd.DataFrame, rxns: pd.DataFrame, p: pd.DataFrame):
         axis=1
     )
     cobra.io.write_sbml_model(cobra_model, 'SimpleFALiver.xml')
+
+    # further edeit model in sbml:
     sbml_model = sbml.readSBML('SimpleFALiver.xml')
+    mmole = sbml_model.getModel().createUnitDefinition()
+    mmole.setId('mmole')
+    unit = mmole.createUnit()
+    unit.setKind(sbml.UNIT_KIND_MOLE)
+    unit.setExponent(1)
+    unit.setScale(-3)
+    unit.setMultiplier(1)
+
+    hr = sbml_model.getModel().createUnitDefinition()
+    hr.setId('h')
+    unit = hr.createUnit()
+    unit.setKind(sbml.UNIT_KIND_SECOND)
+    unit.setExponent(1)
+    unit.setScale(0)
+    unit.setMultiplier(3600)
+
+    mMph = sbml_model.getModel().createUnitDefinition()
+    mMph.setId('mmole_per_hour')
+    unit = mMph.createUnit()
+    unit.setKind(sbml.UNIT_KIND_MOLE)
+    unit.setExponent(1)
+    unit.setScale(-3)
+    unit.setMultiplier(1)
+    unit_1 = mMph.createUnit()
+    unit_1.setKind(sbml.UNIT_KIND_SECOND)
+    unit_1.setExponent(-1)
+    unit_1.setScale(0)
+    unit_1.setMultiplier(3600)
+
     for i, row in p.iterrows():
         param = sbml_model.getModel().createParameter()
         param.setId(row['id'])
-        param.setValue(row['value'])
+        if row['id'][:2] == "vm":
+            param.setValue(row['value']*10)
+        else:
+            param.setValue(row['value'])
+        param.setUnits(row['unit'])
         param.setConstant(True)
 
     for i, row in rxns.iterrows():
@@ -46,6 +81,8 @@ def create_model(mets: pd.DataFrame, rxns: pd.DataFrame, p: pd.DataFrame):
         met = sbml_model.getModel().getSpecies("M_" + row['id'])
         met.setInitialAmount(row['init'])
         met.setConstant(row['constant'])
+        met.setBoundaryCondition(row['boundary'])
+        met.setSubstanceUnits("mmole")
 
     rr = sbml_model.getModel().createRateRule()
     rr.setVariable("M_LD")
@@ -60,4 +97,3 @@ if __name__ == "__main__":
     sbml_string = create_model(mets, rxns, p)
     with open("SimpleFALiver.xml", "w") as f:
         f.write(sbml_string)
-

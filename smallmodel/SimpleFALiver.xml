@@ -9,23 +9,39 @@
           <unit kind="second" exponent="-1" scale="0" multiplier="3600"/>
         </listOfUnits>
       </unitDefinition>
+      <unitDefinition id="mmole">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="h">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="3600"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="mmole_per_hour">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="3600"/>
+        </listOfUnits>
+      </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
       <compartment id="e" constant="true"/>
       <compartment id="c" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="M_FAx" compartment="e" initialAmount="0.5" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="M_FA" compartment="c" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="M_TAG" compartment="c" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="M_LD" compartment="c" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="M_VLDL" compartment="c" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="M_glycerol" compartment="c" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="M_Gly3P" compartment="c" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="M_ATP" compartment="c" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="M_AMP" compartment="c" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="M_PPi" compartment="c" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="M_Pi" compartment="c" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
+      <species id="M_FAx" compartment="e" initialAmount="0.5" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="true"/>
+      <species id="M_FA" compartment="c" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="M_TAG" compartment="c" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="M_LD" compartment="c" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="M_VLDL" compartment="c" initialAmount="1" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="true"/>
+      <species id="M_glycerol" compartment="c" initialAmount="1" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="true"/>
+      <species id="M_Gly3P" compartment="c" initialAmount="1" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="true"/>
+      <species id="M_ATP" compartment="c" initialAmount="1" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="true"/>
+      <species id="M_AMP" compartment="c" initialAmount="1" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="true"/>
+      <species id="M_PPi" compartment="c" initialAmount="1" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="true"/>
+      <species id="M_Pi" compartment="c" initialAmount="1" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="true"/>
     </listOfSpecies>
     <listOfParameters>
       <parameter sboTerm="SBO:0000626" id="cobra_default_lb" value="-1000" constant="true"/>
@@ -33,18 +49,18 @@
       <parameter sboTerm="SBO:0000626" id="cobra_0_bound" value="0" constant="true"/>
       <parameter sboTerm="SBO:0000626" id="minus_inf" value="-INF" constant="true"/>
       <parameter sboTerm="SBO:0000626" id="plus_inf" value="INF" constant="true"/>
-      <parameter id="vm_ir" value="0" constant="true"/>
-      <parameter id="vm_up" value="1" constant="true"/>
-      <parameter id="KM_up" value="0.5" constant="true"/>
-      <parameter id="KM_ir" value="0.5" constant="true"/>
-      <parameter id="vm_tag" value="2" constant="true"/>
-      <parameter id="KM_tag" value="1" constant="true"/>
-      <parameter id="KM_vldl" value="1" constant="true"/>
-      <parameter id="vm_vldl" value="5" constant="true"/>
-      <parameter id="KM_ld" value="0.1" constant="true"/>
-      <parameter id="vm_ld" value="5" constant="true"/>
-      <parameter id="KM_lipo" value="10" constant="true"/>
-      <parameter id="vm_lipo" value="5" constant="true"/>
+      <parameter id="vm_ir" value="0" units="mmole_per_hour" constant="true"/>
+      <parameter id="vm_up" value="10" units="mmole_per_hour" constant="true"/>
+      <parameter id="KM_up" value="0.5" units="mmole" constant="true"/>
+      <parameter id="KM_ir" value="0.5" units="mmole" constant="true"/>
+      <parameter id="vm_tag" value="20" units="mmole_per_hour" constant="true"/>
+      <parameter id="KM_tag" value="1" units="mmole" constant="true"/>
+      <parameter id="KM_vldl" value="1" units="mmole" constant="true"/>
+      <parameter id="vm_vldl" value="50" units="mmole_per_hour" constant="true"/>
+      <parameter id="KM_ld" value="0.1" units="mmole" constant="true"/>
+      <parameter id="vm_ld" value="50" units="mmole_per_hour" constant="true"/>
+      <parameter id="KM_lipo" value="10" units="mmole" constant="true"/>
+      <parameter id="vm_lipo" value="50" units="mmole_per_hour" constant="true"/>
     </listOfParameters>
     <listOfRules>
       <rateRule variable="M_LD"/>

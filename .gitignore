@@ -1,5 +1,7 @@
 # extra stuff
 *.png
+*notes.txt
+.liverenv/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

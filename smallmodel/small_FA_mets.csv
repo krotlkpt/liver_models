@@ -1,12 +1,12 @@
-id, compartment, init, constant
-FAx, e, 0.5, False
-FA, c, 0, False
-TAG, c, 0, False
-LD, c, 0, False
-VLDL, c, 1, True
-glycerol, c, 1, True
-Gly3P, c, 1, True
-ATP, c, 1, True
-AMP, c, 1, True
-PPi, c, 1, True
-Pi, c, 1, True
+id, compartment, init, constant, boundary
+FAx, e, 0.5, True, True
+FA, c, 0, False, False
+TAG, c, 0, False, False
+LD, c, 0, False, False
+VLDL, c, 1, True, True
+glycerol, c, 1, True, True
+Gly3P, c, 1, True, True
+ATP, c, 1, True, True
+AMP, c, 1, True, True
+PPi, c, 1, True, True
+Pi, c, 1, True, True
