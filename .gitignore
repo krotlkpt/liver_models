@@ -2,6 +2,7 @@
 *.png
 *notes.txt
 .liverenv/*
+*.xlsx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

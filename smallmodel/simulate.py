@@ -17,7 +17,6 @@ rr.simulate(
     0, 5, 200,
     selections=["time", "M_LD", "M_TAG", "M_FA"]
 )
-print(rr.keys())
 fig, ax = plt.subplots()
 # ax.plot(rr.time, rr.M_LD, label="LD")
 # ax.plot(rr.time, rr.M_FAx, label="FAx")
@@ -58,7 +57,6 @@ for fax, res in zip(np.arange(0, 5, .01), results):
     result_dict["M_LD"].append(res[0])
     result_dict["M_TAG"].append(res[1])
     result_dict["M_FA"].append(res[2])
-print(result_dict["M_TAG"])
 fig, ax = plt.subplots()
 ax.plot(result_dict["M_FAx"], result_dict["M_LD"], label="LD")
 ax.plot(result_dict["M_FAx"], result_dict["M_TAG"], label="TAG")
